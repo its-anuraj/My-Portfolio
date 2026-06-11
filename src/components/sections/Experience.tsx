@@ -143,7 +143,7 @@ export default function Experience() {
                   initial={{ opacity: 0, x: -24 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ delay: i * 0.12, duration: 0.55, ease: 'easeOut' as any }}
                   className="flex items-start"
                   style={{ gap: "20px" }}
                 >

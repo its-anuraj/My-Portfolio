@@ -40,11 +40,11 @@ const containerVariants = {
 };
 const cardVariants = {
   hidden:  { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as any } },
 };
 const badgeVariants = (delay: number) => ({
   hidden:  { opacity: 0, scale: 0.75 },
-  visible: { opacity: 1, scale: 1, transition: { delay, duration: 0.35, ease: [0.34, 1.56, 0.64, 1] } },
+  visible: { opacity: 1, scale: 1, transition: { delay, duration: 0.35, ease: 'backOut' as any } },
 });
 
 export default function Skills() {
@@ -218,7 +218,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.35, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.35, duration: 0.6, ease: 'easeOut' as any }}
           whileHover={{ y: -3 }}
           className="relative overflow-hidden rounded-[20px] border"
           style={{
