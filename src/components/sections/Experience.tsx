@@ -8,7 +8,7 @@ const entries = [
   {
     role:        "Google Ambassador Program Member",
     org:         "Google",
-    period:      "2023",
+    period:      "2025",
     type:        "experience",
     icon:        Users,
     description: "Represented Google technologies and organized technical initiatives on campus.",
@@ -17,7 +17,7 @@ const entries = [
   {
     role:        "HackIndia Participant",
     org:         "HackIndia",
-    period:      "2024",
+    period:      "2026",
     type:        "achievement",
     icon:        Trophy,
     description: "Collaborated in a national hackathon to design and present a working solution.",
@@ -26,7 +26,7 @@ const entries = [
   {
     role:        "Mobile App Developer",
     org:         "Self / Freelance",
-    period:      "2023 – Present",
+    period:      "2026 – Present",
     type:        "experience",
     icon:        Code2,
     description: "Building cross-platform mobile applications using React Native and modern development practices.",

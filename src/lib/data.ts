@@ -67,7 +67,7 @@ export const experiences = [
   {
     role: "Google Ambassador Program Member",
     org: "Google",
-    period: "Former Member",
+    period: "2025",
     description:
       "Selected as a Google Ambassador, representing Google technologies and programs within the campus community. Conducted workshops, promoted developer tools, and fostered a culture of innovation.",
     type: "experience",
@@ -76,7 +76,7 @@ export const experiences = [
   {
     role: "HackIndia Participant",
     org: "HackIndia",
-    period: "2024",
+    period: "2026",
     description:
       "Competed in HackIndia, one of India's largest hackathon series. Collaborated with a team to design, build, and present a working prototype within 48 hours.",
     type: "achievement",
@@ -85,7 +85,7 @@ export const experiences = [
   {
     role: "Mobile App Developer",
     org: "Self / Freelance",
-    period: "2023 – Present",
+    period: "2026 – Present",
     description:
       "Focused on building cross-platform mobile applications using React Native and TypeScript. Continuously learning advanced patterns, performance optimization, and modern mobile UX principles.",
     type: "experience",
