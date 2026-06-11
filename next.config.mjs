@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  allowedDevOrigins: ["floral-speed-gravel.ngrok-free.dev"],
-  images: {
-    qualities: [25, 50, 75, 100],
-  },
+  // removed invalid allowedDevOrigins and images.qualities
 };
 
 export default nextConfig;
