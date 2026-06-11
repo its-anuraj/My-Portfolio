@@ -28,7 +28,7 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 xl:gap-10"
+          className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-4 xl:gap-10"
         >
 
           {/* ── LEFT COLUMN ──────────────────────────────────────────────── */}
