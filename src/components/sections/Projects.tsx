@@ -128,7 +128,7 @@ export default function Projects() {
                     </p>
                     
                     {/* Demo Credentials */}
-                    {projects.length === 1 && (
+                    {project.title === "Team Forge" && (
                       <div className="mt-4 p-3 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--border)] inline-block self-center sm:self-start">
                         <p className="text-[12px] font-semibold text-[var(--text-primary)] mb-1">Demo Credentials:</p>
                         <p className="text-[12px] text-[var(--text-muted)]">Email: <span className="text-[var(--text-secondary)]">user@gmail.com</span></p>
@@ -151,7 +151,7 @@ export default function Projects() {
 
                   {/* Action Buttons */}
                   <div 
-                    className="grid grid-cols-2 mt-auto"
+                    className={`grid ${project.demo && project.github ? "grid-cols-2" : "grid-cols-1"} mt-auto`}
                     style={{ gap: "12px", marginTop: "4px" }}
                   >
                     {project.github ? (
@@ -171,7 +171,7 @@ export default function Projects() {
                       </div>
                     )}
                     
-                    {project.demo ? (
+                    {project.demo && (
                       <a
                         href={project.demo}
                         target="_blank"
@@ -182,10 +182,6 @@ export default function Projects() {
                         <ExternalLink size={14} />
                         Live Demo
                       </a>
-                    ) : (
-                      <div className="flex items-center justify-center py-2 px-4 rounded-lg bg-[var(--bg-tertiary)] text-[var(--text-muted)] text-[13px] font-bold text-center opacity-50 cursor-not-allowed border border-[var(--border)]" style={{ height: "40px" }}>
-                        No Demo
-                      </div>
                     )}
                   </div>
                 </div>

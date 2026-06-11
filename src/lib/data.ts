@@ -43,6 +43,15 @@ export const skills = [
 
 export const projects = [
   {
+    title: "Expense Tracker App",
+    description:
+      "A comprehensive mobile application designed to help users track their daily personal expenses efficiently. You can log your transactions, categorize your spending, and manage your budget directly from your phone. To use it, simply download the 'expense.apk' file from the GitHub releases section and install it on your Android device.",
+    tags: ["React Native", "TypeScript", "Android", "Mobile App"],
+    github: "https://github.com/its-anuraj/Expense-tracker/releases/tag/v1.0.0",
+    status: "Completed",
+    featured: true,
+  },
+  {
     title: "Team Forge",
     description:
       "A collaborative project management platform developed during HackIndia 2026. The platform helps teams form groups, assign tasks, track progress, monitor performance, and streamline project execution through a unified dashboard.",
