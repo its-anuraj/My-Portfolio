@@ -29,6 +29,50 @@ const certs = [
     border: "rgba(59,130,246,0.25)",
     image: "/certifications/google-ambassador.png",
   },
+  {
+    title: "Deloitte Data Analytics Job Simulation",
+    issuer: "Deloitte",
+    date: "June 2026",
+    status: "Completed",
+    color: "#10b981",
+    bg: "rgba(16,185,129,0.08)",
+    glow: "rgba(16,185,129,0.15)",
+    border: "rgba(16,185,129,0.25)",
+    image: "/certifications/data-analytics.png",
+  },
+  {
+    title: "JPMorgan Chase & Co. Software Engineering Job Simulation",
+    issuer: "JPMorgan Chase & Co.",
+    date: "June 2026",
+    status: "Completed",
+    color: "#005eb8",
+    bg: "rgba(0,94,184,0.08)",
+    glow: "rgba(0,94,184,0.15)",
+    border: "rgba(0,94,184,0.25)",
+    image: "/certifications/jpmorgan.png",
+  },
+  {
+    title: "Tata GenAI Powered Data Analytics Job Simulation",
+    issuer: "Tata",
+    date: "June 2026",
+    status: "Completed",
+    color: "#2563eb",
+    bg: "rgba(37,99,235,0.08)",
+    glow: "rgba(37,99,235,0.15)",
+    border: "rgba(37,99,235,0.25)",
+    image: "/certifications/tata.png",
+  },
+  {
+    title: "Mastercard Cybersecurity Job Simulation",
+    issuer: "Mastercard",
+    date: "June 2026",
+    status: "Completed",
+    color: "#eb001b",
+    bg: "rgba(235,0,27,0.08)",
+    glow: "rgba(235,0,27,0.15)",
+    border: "rgba(235,0,27,0.25)",
+    image: "/certifications/mastercard.png",
+  },
 ];
 
 export default function Certifications() {
@@ -142,6 +186,8 @@ export default function Certifications() {
                     src={cert.image}
                     alt={cert.title}
                     fill
+                    quality={100}
+                    unoptimized
                     className="object-contain p-2"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
