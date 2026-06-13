@@ -72,39 +72,32 @@ export default function Resume() {
 
               {/* Buttons */}
               <div className="flex items-center gap-3 flex-shrink-0">
-                <button
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   id="resume-preview"
-                  disabled
-                  className="btn-secondary opacity-50 cursor-not-allowed text-sm px-4 py-2"
-                  title="Preview coming soon"
+                  className="btn-secondary text-sm px-4 py-2 flex items-center gap-2"
+                  title="Preview resume"
                 >
                   <Eye size={15} />
                   Preview
-                </button>
-                <button
+                </a>
+                <a
+                  href="/resume.pdf"
+                  download
                   id="resume-download"
-                  disabled
-                  className="btn-primary opacity-50 cursor-not-allowed text-sm px-4 py-2"
-                  title="Download coming soon"
+                  className="btn-primary text-sm px-4 py-2 flex items-center gap-2"
+                  title="Download resume"
                 >
                   <Download size={15} />
                   Download
-                </button>
+                </a>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Footnote */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-center text-[var(--text-muted)] text-xs sm:text-sm mt-5"
-        >
-          Resume download will be available soon. Contact me directly in the meantime.
-        </motion.p>
       </div>
     </SectionWrapper>
   );
