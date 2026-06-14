@@ -132,7 +132,7 @@ export default function HeroOrbit() {
           key={node.label}
           initial={{ opacity: 0, scale: 0.4 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 + i * 0.08, duration: 0.5, ease: 'backOut' as any }}
+          transition={{ delay: 0.5 + i * 0.08, duration: 0.5, ease: "backOut" }}
           className="absolute flex justify-center group z-10"
           style={{ 
             left: `${node.leftPct}%`, 

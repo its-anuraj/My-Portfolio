@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, Phone, Send, MapPin } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, Send, MapPin, CheckCircle, AlertCircle } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { personalInfo } from "@/lib/data";
@@ -50,6 +51,67 @@ const contactLinks = [
 ];
 
 export default function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setErrorMsg("Please fill in all fields.");
+      setStatus("error");
+      return;
+    }
+    
+    // Simple email regex
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorMsg("Please enter a valid email address.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      // Send data to Formsubmit.co API
+      const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: "New Contact Form Submission from Portfolio",
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setStatus("idle");
+        }, 5000);
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      setErrorMsg("Something went wrong. Please try again later.");
+      setStatus("error");
+    }
+  };
+
   return (
     <SectionWrapper id="contact">
       {/* Container max-width 1200px, padding 80px top/bottom */}
@@ -104,7 +166,7 @@ export default function Contact() {
             style={{ 
               maxWidth: "900px",
               marginTop: "40px", 
-              marginBottom: "32px", 
+              marginBottom: "40px", 
               borderRadius: "20px",
               boxShadow: "var(--shadow-md)"
             }}
@@ -143,79 +205,144 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Contact Links Grid */}
-          <div 
-            className="grid grid-cols-1 md:grid-cols-2 w-full mx-auto"
-            style={{ 
-              maxWidth: "1200px",
-              gap: "24px" 
-            }}
-          >
-            {contactLinks.map((link, i) => (
-              <motion.a
-                key={link.id}
-                href={link.href}
-                id={link.id}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.4 }}
-                whileHover={{ y: -4, boxShadow: "var(--shadow-lg)" }}
-                className="flex items-center group transition-all duration-300 w-full bg-[var(--bg-tertiary)] border border-[var(--border)]"
-                style={{ 
-                  padding: "24px", 
-                  gap: "16px", 
-                  minHeight: "120px", 
-                  maxHeight: "140px", 
-                  borderRadius: "20px",
-                  boxShadow: "var(--shadow-md)"
-                }}
-              >
-                {/* Icon box */}
-                <div
-                  className="rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: link.bg, width: "48px", height: "48px" }}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-[1000px] mx-auto">
+            {/* Contact Links Column */}
+            <div className="flex flex-col gap-4">
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">Connect with me</h3>
+              {contactLinks.map((link, i) => (
+                <motion.a
+                  key={link.id}
+                  href={link.href}
+                  id={link.id}
+                  aria-label={link.label}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05, duration: 0.4 }}
+                  whileHover={{ y: -2, boxShadow: "var(--shadow-md)" }}
+                  className="flex items-center group transition-all duration-300 w-full bg-[var(--bg-tertiary)] border border-[var(--border)] rounded-2xl"
+                  style={{ 
+                    padding: "16px 20px", 
+                    gap: "16px",
+                  }}
                 >
-                  <link.icon size={20} style={{ color: link.color }} />
-                </div>
-
-                {/* Text */}
-                <div className="min-w-0 flex-1 flex flex-col justify-center">
-                  <p 
-                    className="text-[11px] font-bold uppercase tracking-widest"
-                    style={{ color: link.color, marginBottom: "4px" }}
-                  >
-                    {link.label}
-                  </p>
-                  <p className="font-semibold text-[15px] text-[var(--text-primary)] truncate" style={{ marginBottom: "2px" }}>
-                    {link.value}
-                  </p>
-                  <p className="text-[13px] text-[var(--text-muted)] leading-tight">
-                    {link.description}
-                  </p>
-                </div>
-
-                {/* Arrow */}
-                <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center"
-                    style={{ background: link.bg }}
+                    className="rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    style={{ background: link.bg, width: "42px", height: "42px" }}
                   >
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ color: link.color }}>
-                      <path
-                        d="M2 10L10 2M10 2H4M10 2V8"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <link.icon size={18} style={{ color: link.color }} />
                   </div>
+
+                  <div className="min-w-0 flex-1 flex flex-col justify-center">
+                    <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: link.color, marginBottom: "2px" }}>
+                      {link.label}
+                    </p>
+                    <p className="font-semibold text-[14px] text-[var(--text-primary)] truncate">
+                      {link.value}
+                    </p>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Contact Form Column */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-[var(--bg-tertiary)] border border-[var(--border)] rounded-2xl p-6 lg:p-8 shadow-[var(--shadow-sm)] relative overflow-hidden"
+            >
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6">Send me a message</h3>
+              
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="name" className="text-sm font-medium text-[var(--text-secondary)]">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your name"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-colors"
+                  />
                 </div>
-              </motion.a>
-            ))}
+                
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="email" className="text-sm font-medium text-[var(--text-secondary)]">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="your.email@example.com"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-colors"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="message" className="text-sm font-medium text-[var(--text-secondary)]">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="How can I help you?"
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] transition-colors resize-y min-h-[100px]"
+                  />
+                </div>
+
+                <AnimatePresence>
+                  {status === "error" && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10, height: 0 }}
+                      animate={{ opacity: 1, y: 0, height: "auto" }}
+                      exit={{ opacity: 0, y: -10, height: 0 }}
+                      className="flex items-center gap-2 text-red-500 text-sm mt-1"
+                    >
+                      <AlertCircle size={16} />
+                      <span>{errorMsg}</span>
+                    </motion.div>
+                  )}
+                  
+                  {status === "success" && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10, height: 0 }}
+                      animate={{ opacity: 1, y: 0, height: "auto" }}
+                      exit={{ opacity: 0, y: -10, height: 0 }}
+                      className="flex items-center gap-2 text-emerald-500 text-sm mt-1"
+                    >
+                      <CheckCircle size={16} />
+                      <span>Message sent successfully! I'll get back to you soon.</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <button
+                  type="submit"
+                  disabled={status === "submitting"}
+                  className="mt-2 w-full py-3.5 px-6 rounded-xl font-semibold text-white transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  style={{
+                    background: "linear-gradient(135deg, #6366f1, #7c3aed)",
+                    boxShadow: "0 4px 14px rgba(99,102,241,0.25)",
+                  }}
+                >
+                  {status === "submitting" ? (
+                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Send Message
+                      <Send size={16} />
+                    </>
+                  )}
+                </button>
+              </form>
+            </motion.div>
           </div>
         </div>
       </div>

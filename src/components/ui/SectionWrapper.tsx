@@ -14,7 +14,7 @@ const variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: 'easeOut' as any },
+    transition: { duration: 0.7, ease: "easeOut" },
   },
 };
 

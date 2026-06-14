@@ -27,7 +27,7 @@ export default function Resume() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' as any }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="max-w-2xl mx-auto card glow-border overflow-hidden"
         >
           {/* Preview area */}
