@@ -61,6 +61,15 @@ export const projects = [
     status: "Completed",
     featured: true,
   },
+  {
+    title: "Disaster Alert & Management App",
+    description:
+      "A real-time mobile application designed to provide crucial disaster alerts, emergency guidelines, and safe routing. It empowers users to stay informed during crises, report local incidents, and access immediate assistance through a seamless, reliable interface.",
+    tags: ["React Native", "TypeScript", "Firebase", "Maps API"],
+    github: "#",
+    status: "Completed",
+    featured: true,
+  },
 ];
 
 export const experiences = [
