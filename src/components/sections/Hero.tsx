@@ -16,7 +16,7 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden grid-bg">
+    <section id="home" className="relative min-h-screen overflow-hidden">
       <div className="orb orb-1" />
       <div className="orb orb-2" />
 
@@ -110,13 +110,7 @@ export default function Hero() {
               <motion.a
                 href="#projects"
                 id="hero-view-work"
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm transition-all duration-200"
-                style={{
-                  background: "linear-gradient(135deg, #6366f1, #7c3aed)",
-                  boxShadow: "0 0 24px rgba(99,102,241,0.45), 0 4px 14px rgba(99,102,241,0.3)",
-                }}
+                className="btn-primary"
               >
                 View My Work
                 <ArrowRight size={16} />
@@ -127,15 +121,7 @@ export default function Hero() {
                 href="/resume.pdf"
                 id="hero-download-resume"
                 download
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border transition-all duration-200"
-                style={{
-                  color: "var(--text-primary)",
-                  borderColor: "rgba(139,92,246,0.45)",
-                  background: "rgba(99,102,241,0.06)",
-                  boxShadow: "0 0 16px rgba(99,102,241,0.12)",
-                }}
+                className="btn-secondary"
               >
                 Download Resume
                 <Download size={15} />

@@ -15,8 +15,8 @@ const contactLinks = [
     value: personalInfo.email,
     href: `mailto:${personalInfo.email}`,
     description: "Best way to reach me",
-    color: "#818cf8",
-    bg: "rgba(129,140,248,0.1)",
+    color: "var(--text-muted)",
+    bg: "var(--bg-primary)",
   },
   {
     id: "contact-phone",
@@ -25,8 +25,8 @@ const contactLinks = [
     value: personalInfo.phone,
     href: `tel:${personalInfo.phone}`,
     description: "Available on WhatsApp",
-    color: "#10b981",
-    bg: "rgba(16,185,129,0.1)",
+    color: "var(--text-muted)",
+    bg: "var(--bg-primary)",
   },
   {
     id: "contact-github",
@@ -35,8 +35,8 @@ const contactLinks = [
     value: "its-anuraj",
     href: personalInfo.github,
     description: "Check out my code",
-    color: "#a0a0b8",
-    bg: "rgba(160,160,184,0.08)",
+    color: "var(--text-muted)",
+    bg: "var(--bg-primary)",
   },
   {
     id: "contact-linkedin",
@@ -45,8 +45,8 @@ const contactLinks = [
     value: "anuraj-singh",
     href: personalInfo.linkedin,
     description: "Let's connect professionally",
-    color: "#0ea5e9",
-    bg: "rgba(14,165,233,0.1)",
+    color: "var(--text-muted)",
+    bg: "var(--bg-primary)",
   },
 ];
 
@@ -326,11 +326,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="mt-2 w-full py-3.5 px-6 rounded-xl font-semibold text-white transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                  style={{
-                    background: "linear-gradient(135deg, #6366f1, #7c3aed)",
-                    boxShadow: "0 4px 14px rgba(99,102,241,0.25)",
-                  }}
+                  className="btn-primary mt-2 w-full py-3.5 flex justify-center gap-2"
                 >
                   {status === "submitting" ? (
                     <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

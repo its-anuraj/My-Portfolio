@@ -5,33 +5,7 @@ import { BookOpen } from "lucide-react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { skills } from "@/lib/data";
 
-/* ─── Color palette per category ─────────────────────────────────────────── */
-const colorMap: Record<string, { accent: string; bg: string; border: string; glow: string }> = {
-  violet: {
-    accent: "#818cf8",
-    bg:     "rgba(99,102,241,0.07)",
-    border: "rgba(99,102,241,0.22)",
-    glow:   "rgba(99,102,241,0.18)",
-  },
-  blue: {
-    accent: "#60a5fa",
-    bg:     "rgba(59,130,246,0.07)",
-    border: "rgba(59,130,246,0.22)",
-    glow:   "rgba(59,130,246,0.18)",
-  },
-  emerald: {
-    accent: "#34d399",
-    bg:     "rgba(16,185,129,0.07)",
-    border: "rgba(16,185,129,0.22)",
-    glow:   "rgba(16,185,129,0.18)",
-  },
-  orange: {
-    accent: "#fb923c",
-    bg:     "rgba(249,115,22,0.07)",
-    border: "rgba(249,115,22,0.22)",
-    glow:   "rgba(249,115,22,0.18)",
-  },
-};
+
 
 /* ─── Animation variants ─────────────────────────────────────────────────── */
 const containerVariants = {
@@ -49,7 +23,7 @@ const badgeVariants = (delay: number) => ({
 
 export default function Skills() {
   return (
-    <SectionWrapper id="skills" className="bg-[var(--bg-secondary)]">
+    <SectionWrapper id="skills">
       <div
         className="mx-auto w-full"
         style={{ maxWidth: "1400px", padding: "0 clamp(20px, 5vw, 80px)" }}
@@ -127,14 +101,13 @@ export default function Skills() {
           style={{ gap: "24px", marginBottom: "24px" }}
         >
           {skills.map((group, gi) => {
-            const c = colorMap[group.color];
             return (
               <motion.div
                 key={group.category}
                 variants={cardVariants}
                 whileHover={{
                   y: -4,
-                  boxShadow: `0 0 40px ${c.glow}, var(--shadow-lg)`,
+                  boxShadow: `0 0 40px var(--accent-glow), var(--shadow-lg)`,
                 }}
                 transition={{ duration: 0.25 }}
                 className="relative overflow-hidden rounded-[20px] border border-l-4"
@@ -143,7 +116,7 @@ export default function Skills() {
                   padding: "28px",
                   background: "var(--bg-tertiary)",
                   borderColor: "var(--border)",
-                  borderLeftColor: c.accent,
+                  borderLeftColor: "var(--accent)",
                   boxShadow: "var(--shadow-md)",
                   cursor: "default",
                 }}
@@ -152,7 +125,7 @@ export default function Skills() {
                 <div
                   className="absolute top-0 right-0 w-36 h-36 pointer-events-none rounded-bl-full"
                   style={{
-                    background: `radial-gradient(circle at top right, ${c.glow} 0%, transparent 70%)`,
+                    background: `radial-gradient(circle at top right, var(--accent-glow) 0%, transparent 70%)`,
                   }}
                 />
 
@@ -179,9 +152,9 @@ export default function Skills() {
                     style={{
                       fontSize: "11px",
                       padding: "3px 10px",
-                      background: c.bg,
-                      color: c.accent,
-                      border: `1px solid ${c.border}`,
+                      background: "var(--accent-glow)",
+                      color: "var(--accent)",
+                      border: `1px solid var(--accent-glow)`,
                     }}
                   >
                     {group.items.length} skills
@@ -197,10 +170,8 @@ export default function Skills() {
                     <motion.span
                       key={skill}
                       variants={badgeVariants(gi * 0.1 + si * 0.055)}
-                      whileHover={{ scale: 1.05, background: c.bg, color: c.accent, borderColor: c.accent }}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-[var(--bg-primary)] border-[var(--border)] text-[var(--text-secondary)]"
+                      className="tag"
                       style={{
-                        fontSize: "0.825rem",
                         transition: "all 0.2s ease",
                       }}
                     >
@@ -220,16 +191,14 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
           whileHover={{ y: -3 }}
-          className="relative overflow-hidden rounded-[20px] border"
+          className="relative overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--bg-tertiary)]"
           style={{
             padding: "32px 40px",
             minHeight: "200px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "linear-gradient(135deg, rgba(99,102,241,0.07) 0%, rgba(139,92,246,0.05) 100%)",
-            borderColor: "rgba(99,102,241,0.25)",
-            boxShadow: "0 0 40px rgba(99,102,241,0.10), 0 0 0 1px rgba(99,102,241,0.16)",
+            boxShadow: "var(--shadow-md)",
             backdropFilter: "blur(12px)",
           }}
         >
@@ -237,7 +206,7 @@ export default function Skills() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: "radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.12) 0%, transparent 65%)",
+              background: "radial-gradient(ellipse at 50% 0%, var(--accent-glow) 0%, transparent 65%)",
             }}
           />
 
@@ -248,17 +217,15 @@ export default function Skills() {
           >
             {/* Icon */}
             <div
-              className="flex items-center justify-center rounded-2xl"
+              className="flex items-center justify-center rounded-2xl bg-[var(--bg-primary)] border border-[var(--border)]"
               style={{
                 width: "48px",
                 height: "48px",
                 marginBottom: "20px",
-                background: "rgba(99,102,241,0.14)",
-                border: "1px solid rgba(99,102,241,0.30)",
-                boxShadow: "0 0 20px rgba(99,102,241,0.22)",
+                boxShadow: "0 0 20px var(--accent-glow)",
               }}
             >
-              <BookOpen size={20} style={{ color: "#818cf8" }} />
+              <BookOpen size={20} style={{ color: "var(--accent)" }} />
             </div>
 
             {/* Title */}

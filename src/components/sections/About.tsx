@@ -182,7 +182,7 @@ export default function About() {
               style={{ padding: "28px" }}
             >
               {/* Deco gradient corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-violet-500/10 to-transparent rounded-bl-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[var(--accent-glow)] to-transparent rounded-bl-full pointer-events-none" />
 
               {/* Profile header */}
               <div
@@ -195,8 +195,8 @@ export default function About() {
                     width: "44px",
                     height: "44px",
                     fontSize: "15px",
-                    background: "linear-gradient(135deg, #7c3aed, #6366f1)",
-                    boxShadow: "0 0 20px rgba(99,102,241,0.35)",
+                    background: "linear-gradient(135deg, var(--accent), var(--accent-light))",
+                    boxShadow: "var(--shadow-glow)",
                   }}
                 >
                   A
@@ -218,7 +218,7 @@ export default function About() {
                 </div>
 
                 <div className="flex items-center flex-shrink-0" style={{ gap: "6px" }}>
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
                   <span
                     className="text-[var(--text-muted)] hidden sm:inline"
                     style={{ fontSize: "0.75rem" }}

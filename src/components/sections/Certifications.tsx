@@ -12,10 +12,6 @@ const certs = [
     issuer: "HackIndia",
     date: "2026",
     status: "Participant",
-    color: "#f59e0b",
-    bg: "rgba(245,158,11,0.08)",
-    glow: "rgba(245,158,11,0.15)",
-    border: "rgba(245,158,11,0.25)",
     image: "/certifications/hackindia.png",
   },
   {
@@ -23,10 +19,6 @@ const certs = [
     issuer: "Google",
     date: "2025",
     status: "Completed",
-    color: "#3b82f6",
-    bg: "rgba(59,130,246,0.08)",
-    glow: "rgba(59,130,246,0.15)",
-    border: "rgba(59,130,246,0.25)",
     image: "/certifications/google-ambassador.png",
   },
   {
@@ -34,10 +26,6 @@ const certs = [
     issuer: "Deloitte",
     date: "June 2026",
     status: "Completed",
-    color: "#10b981",
-    bg: "rgba(16,185,129,0.08)",
-    glow: "rgba(16,185,129,0.15)",
-    border: "rgba(16,185,129,0.25)",
     image: "/certifications/data-analytics.png",
   },
   {
@@ -45,10 +33,6 @@ const certs = [
     issuer: "JPMorgan Chase & Co.",
     date: "June 2026",
     status: "Completed",
-    color: "#005eb8",
-    bg: "rgba(0,94,184,0.08)",
-    glow: "rgba(0,94,184,0.15)",
-    border: "rgba(0,94,184,0.25)",
     image: "/certifications/jpmorgan.png",
   },
   {
@@ -56,10 +40,6 @@ const certs = [
     issuer: "Tata",
     date: "June 2026",
     status: "Completed",
-    color: "#2563eb",
-    bg: "rgba(37,99,235,0.08)",
-    glow: "rgba(37,99,235,0.15)",
-    border: "rgba(37,99,235,0.25)",
     image: "/certifications/tata.png",
   },
   {
@@ -67,10 +47,6 @@ const certs = [
     issuer: "Mastercard",
     date: "June 2026",
     status: "Completed",
-    color: "#eb001b",
-    bg: "rgba(235,0,27,0.08)",
-    glow: "rgba(235,0,27,0.15)",
-    border: "rgba(235,0,27,0.25)",
     image: "/certifications/mastercard.png",
   },
 ];
@@ -144,7 +120,7 @@ export default function Certifications() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
-              whileHover={{ y: -4, boxShadow: `0 0 30px ${cert.glow}, var(--shadow-lg)` }}
+              whileHover={{ y: -4, boxShadow: `0 0 30px var(--accent-glow), var(--shadow-lg)` }}
               className="relative flex flex-col overflow-hidden rounded-[20px] border transition-all duration-300 group"
               style={{
                 background: "var(--bg-tertiary)",
@@ -159,7 +135,7 @@ export default function Certifications() {
               <div
                 className="absolute top-0 right-0 w-32 h-32 pointer-events-none rounded-bl-full opacity-60 z-0"
                 style={{
-                  background: `radial-gradient(circle at top right, ${cert.glow} 0%, transparent 70%)`,
+                  background: `radial-gradient(circle at top right, var(--accent-glow) 0%, transparent 70%)`,
                 }}
               />
 
@@ -167,13 +143,13 @@ export default function Certifications() {
               <div className="relative z-10 flex items-center justify-between mb-4">
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center border"
-                  style={{ background: cert.bg, borderColor: cert.border, boxShadow: `0 0 20px ${cert.glow}` }}
+                  style={{ background: "var(--accent-glow)", borderColor: "var(--accent-glow)", boxShadow: `0 0 20px var(--accent-glow)` }}
                 >
-                  <Award size={22} style={{ color: cert.color }} />
+                  <Award size={22} style={{ color: "var(--accent)" }} />
                 </div>
                 <div
                   className="px-3 py-1 text-[11px] font-bold tracking-wide uppercase rounded-full"
-                  style={{ background: cert.color, color: "#fff" }}
+                  style={{ background: "var(--accent)", color: "var(--bg-primary)" }}
                 >
                   {cert.status}
                 </div>
@@ -204,7 +180,7 @@ export default function Certifications() {
                 </h3>
                 
                 <div className="flex items-center gap-2 text-sm font-medium mb-1" style={{ color: "var(--text-secondary)" }}>
-                  <ShieldCheck size={15} style={{ color: cert.color }} />
+                  <ShieldCheck size={15} style={{ color: "var(--accent)" }} />
                   {cert.issuer}
                 </div>
                 

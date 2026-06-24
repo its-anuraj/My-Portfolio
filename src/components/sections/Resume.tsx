@@ -6,7 +6,7 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 
 export default function Resume() {
   return (
-    <SectionWrapper id="resume" className="bg-[var(--bg-secondary)]">
+    <SectionWrapper id="resume">
       <div className="container-custom">
 
         {/* Header */}
@@ -35,8 +35,8 @@ export default function Resume() {
             <div className="absolute inset-0 grid-bg opacity-30" />
 
             <div className="relative z-10 flex flex-col items-center gap-4 px-6 text-center">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-[0_0_30px_rgba(99,102,241,0.4)]">
-                <FileText size={26} className="text-white" />
+              <div className="w-14 h-14 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border)] flex items-center justify-center shadow-[0_0_30px_var(--accent-glow)]">
+                <FileText size={26} style={{ color: "var(--accent)" }} />
               </div>
               <div>
                 <p className="font-bold text-[var(--text-primary)] text-lg">Anuraj Singh</p>
