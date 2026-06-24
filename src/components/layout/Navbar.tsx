@@ -127,42 +127,6 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* Theme Toggle */}
-            {mounted && (
-              <motion.button
-                onClick={toggleTheme}
-                id="theme-toggle"
-                aria-label="Toggle theme"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-9 h-9 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
-              >
-                <AnimatePresence mode="wait">
-                  {theme === "dark" ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Sun size={16} />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Moon size={16} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-            )}
-
             {/* Mobile Menu Toggle */}
             <button
               id="mobile-menu-toggle"

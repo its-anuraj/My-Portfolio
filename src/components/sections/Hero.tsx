@@ -17,9 +17,6 @@ const itemVariants = {
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden">
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-
       <div
         className="container-custom relative z-10"
         style={{ paddingTop: "100px", paddingBottom: "72px" }}

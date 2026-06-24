@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
@@ -7,6 +7,12 @@ import Footer from "@/components/ui/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
 });
@@ -48,15 +54,22 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} h-full antialiased`}
+      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 grid-bg">
+      <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 noise">
+        
+        {/* Grid Background */}
+        <div className="fixed inset-0 pointer-events-none z-10 grid-bg mask-radial-fade" />
+
+        {/* Main Content */}
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-1 flex flex-col">
-            {children}
-          </main>
-          <Footer />
+          <div className="relative z-20 flex-1 flex flex-col">
+            <Navbar />
+            <main className="flex-1 flex flex-col">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
