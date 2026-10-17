@@ -16,7 +16,7 @@ html {
   --color-primary-hover: #9D8449;
   --color-heading: #111111;
   --color-text: #5B5B5B;
-  --color-muted: #888888;
+  --color-muted: #5E5E5E;
   --color-border: #E5E1D8;
   --color-grid: rgba(180, 154, 90, 0.07);
 
@@ -26,7 +26,7 @@ html {
   --bg-tertiary: #FFFFFF;
   --text-primary: #111111;
   --text-secondary: #5B5B5B;
-  --text-muted: #888888;
+  --text-muted: #5E5E5E;
   --border: #E5E1D8;
   --border-hover: rgba(180, 154, 90, 0.45);
   --accent: #B49A5A;
@@ -52,7 +52,7 @@ html {
   --color-primary-hover: #D8C38B;
   --color-heading: #F4F4F5;
   --color-text: #A1A1AA;
-  --color-muted: #71717A;
+  --color-muted: #9CA3AF;
   --color-border: rgba(255, 255, 255, 0.09);
   --color-grid: rgba(180, 154, 90, 0.05);
 
@@ -61,7 +61,7 @@ html {
   --bg-tertiary: #1E1E22;
   --text-primary: #F4F4F5;
   --text-secondary: #A1A1AA;
-  --text-muted: #71717A;
+  --text-muted: #9CA3AF;
   --border: rgba(255, 255, 255, 0.09);
   --border-hover: rgba(197, 175, 119, 0.5);
   --accent: #C5AF77;

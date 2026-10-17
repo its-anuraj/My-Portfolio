@@ -54,7 +54,7 @@ export default function Hero() {
               }}
             >
               <span style={{ color: "var(--text-primary)" }}>Hi, I&apos;m </span>
-              <span className="gradient-text animate-gradient">Anuraj Singh</span>
+              <span className="gradient-text">Anuraj Singh</span>
             </motion.h1>
 
             {/* Role / Positioning */}

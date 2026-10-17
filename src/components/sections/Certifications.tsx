@@ -175,8 +175,7 @@ export default function Certifications() {
                     src={cert.image}
                     alt={`${cert.title} Certificate — Anuraj Singh`}
                     fill
-                    quality={100}
-                    unoptimized
+                    quality={85}
                     className="object-contain p-2"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />

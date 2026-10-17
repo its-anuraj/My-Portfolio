@@ -236,6 +236,7 @@ export default function Resume() {
                 <iframe
                   src="/resume.pdf?v=2#view=FitH"
                   title="Anuraj Singh Official Resume"
+                  loading="lazy"
                   className="w-full h-full border-0 block"
                 />
 

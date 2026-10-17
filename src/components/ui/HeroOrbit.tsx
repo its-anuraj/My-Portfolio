@@ -212,7 +212,7 @@ export default function HeroOrbit() {
             className="object-cover"
             style={{ objectPosition: "top center" }}
             priority
-            quality={100}
+            quality={85}
           />
         </div>
 
