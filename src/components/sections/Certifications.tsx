@@ -173,7 +173,7 @@ export default function Certifications() {
                 <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden border border-[var(--border)] z-10 bg-[var(--bg-secondary)]">
                   <Image
                     src={cert.image}
-                    alt={cert.title}
+                    alt={`${cert.title} Certificate — Anuraj Singh`}
                     fill
                     quality={100}
                     unoptimized
@@ -208,6 +208,7 @@ export default function Certifications() {
                   href={cert.image}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Preview ${cert.title} certificate for Anuraj Singh`}
                   className="absolute inset-0 bg-black/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 rounded-2xl"
                 >
                   <div className="flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-xl">

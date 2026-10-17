@@ -112,7 +112,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
-                aria-label="GitHub"
+                aria-label="Anuraj Singh GitHub Profile"
               >
                 <GitHubIcon size={18} />
               </a>
@@ -121,7 +121,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
-                aria-label="LinkedIn"
+                aria-label="Anuraj Singh LinkedIn Profile"
               >
                 <LinkedInIcon size={18} />
               </a>

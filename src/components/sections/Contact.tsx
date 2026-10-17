@@ -330,7 +330,7 @@ export default function Contact() {
                       className="flex items-center gap-2 text-emerald-500 text-sm mt-1"
                     >
                       <CheckCircle size={16} />
-                      <span>Message sent successfully! I'll get back to you soon.</span>
+                      <span>Message sent successfully! I&apos;ll get back to you soon.</span>
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -6,30 +6,30 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 
 const entries = [
   {
-    role:        "Google Ambassador Program Member",
+    role:        "Google Student Ambassador",
     org:         "Google",
-    period:      "2025",
+    period:      "Aug 2024 – Jan 2025",
     type:        "experience",
     icon:        Users,
-    description: "Represented Google technologies and organized technical initiatives on campus.",
+    description: "Conducted Gemini AI workshops and technical sessions on campus, empowering students to integrate generative AI and Google developer tools into modern workflows.",
     iconColor:   "#B49A5A",
   },
   {
-    role:        "HackIndia Participant",
+    role:        "HackIndia Hackathon Participant",
     org:         "HackIndia",
     period:      "2026",
     type:        "achievement",
     icon:        Trophy,
-    description: "Collaborated in a national hackathon to design and present a working solution.",
+    description: "Competed in India's premier 48-hour hackathon series; collaborated in a team to build, pitch, and demo TeamForge, an intelligent workforce orchestration prototype.",
     iconColor:   "#B49A5A",
   },
   {
     role:        "Mobile App Developer",
-    org:         "Self / Freelance",
-    period:      "2026 – Present",
+    org:         "Independent & Open Source",
+    period:      "2024 – Present",
     type:        "experience",
     icon:        Code2,
-    description: "Building cross-platform mobile applications using React Native and modern development practices.",
+    description: "Engineering cross-platform mobile apps using React Native, Expo, and TypeScript. Specializing in modular architectures, offline sync, and Google Gemini API integrations.",
     iconColor:   "#B49A5A",
   },
 ];

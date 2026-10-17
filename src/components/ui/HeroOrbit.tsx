@@ -206,7 +206,7 @@ export default function HeroOrbit() {
         >
           <Image
             src="/anuraj.png"
-            alt="Anuraj Singh"
+            alt="Anuraj Singh — Mobile App Developer specializing in React Native and Expo"
             fill
             sizes="(max-width: 480px) 240px, (max-width: 768px) 280px, 320px"
             className="object-cover"

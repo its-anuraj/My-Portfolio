@@ -50,26 +50,24 @@ export default function Hero() {
                 fontWeight: 800,
                 lineHeight: 1.06,
                 letterSpacing: "-0.02em",
-                marginBottom: "20px",
+                marginBottom: "18px",
               }}
             >
               <span style={{ color: "var(--text-primary)" }}>Hi, I&apos;m </span>
-              <span className="gradient-text animate-gradient">Anuraj</span>
-              <br />
-              <span style={{ color: "var(--text-primary)" }}>Singh</span>
+              <span className="gradient-text animate-gradient">Anuraj Singh</span>
             </motion.h1>
 
-            {/* Role */}
+            {/* Role / Positioning */}
             <motion.p
               variants={itemVariants}
               style={{
-                fontSize: "clamp(1.3rem, 3vw, 1.9rem)",
+                fontSize: "clamp(1.15rem, 2.6vw, 1.65rem)",
                 fontWeight: 700,
                 color: "var(--text-secondary)",
-                marginBottom: "14px",
+                marginBottom: "12px",
               }}
             >
-              Mobile App Developer
+              Mobile App Developer <span className="text-[var(--accent)]">|</span> React Native &amp; Expo
             </motion.p>
 
             {/* Tagline */}

@@ -76,19 +76,25 @@ export default function About() {
             <motion.p
               variants={fadeUp}
               className="text-[var(--text-secondary)] leading-relaxed"
-              style={{ fontSize: "0.95rem", marginBottom: "14px", maxWidth: "580px" }}
+              style={{ fontSize: "0.95rem", marginBottom: "14px", maxWidth: "600px" }}
             >
-              {personalInfo.bio}
+              I&apos;m <strong>Anuraj Singh</strong>, a Mobile App Developer and 4th-year B.Tech Computer Science student at <strong>KCC Institute of Technology &amp; Management</strong> in Greater Noida (graduating 2027). A former Google Ambassador alum and HackIndia builder, I specialize in crafting fluid, cross-platform mobile experiences with <strong>React Native</strong>, <strong>Expo</strong>, and <strong>TypeScript</strong>.
+            </motion.p>
+
+            <motion.p
+              variants={fadeUp}
+              className="text-[var(--text-secondary)] leading-relaxed"
+              style={{ fontSize: "0.92rem", marginBottom: "14px", maxWidth: "600px" }}
+            >
+              <strong>What I work with &amp; enjoy solving:</strong> I focus on building reliable mobile applications with intuitive UI/UX, robust offline-first data handling, and clean modular state management with Zustand. I love solving high-friction consumer problems — from integrating Google Gemini Multimodal AI for instant invoice parsing in <em>Keepr</em>, to designing multi-factor collision telemetry in emergency response systems.
             </motion.p>
 
             <motion.p
               variants={fadeUp}
               className="text-[var(--text-muted)] leading-relaxed"
-              style={{ fontSize: "0.9rem", marginBottom: "36px", maxWidth: "560px" }}
+              style={{ fontSize: "0.9rem", marginBottom: "32px", maxWidth: "600px" }}
             >
-              Currently in my 4th year of B.Tech in Computer Science, I&apos;m deeply focused on
-              mastering mobile development paradigms — from architecture patterns to advanced
-              animations and performance tuning.
+              <strong>Currently building &amp; connecting:</strong> Actively enhancing Keepr, exploring modern React Native architectural patterns, and available for software engineering internships and mobile developer roles. Recruiters and engineering leads can reach me directly via <a href="mailto:ajsinghindolia@gmail.com" className="text-[var(--accent)] underline hover:opacity-80">ajsinghindolia@gmail.com</a>, via phone at <a href="tel:+916397193704" className="text-[var(--accent)] underline hover:opacity-80">+91 6397193704</a>, or through the <a href="#contact" className="text-[var(--accent)] underline hover:opacity-80">Contact section</a> below.
             </motion.p>
 
             {/* Highlights list */}
