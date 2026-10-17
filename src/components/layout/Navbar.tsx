@@ -61,7 +61,7 @@ export default function Navbar() {
             whileTap={{ scale: 0.98 }}
           >
             <a href="#home" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm shadow-[0_0_20px_rgba(99,102,241,0.4)] group-hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-shadow">
+              <div className="w-8 h-8 rounded-lg bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm shadow-[0_0_20px_rgba(180,154,90,0.4)] group-hover:shadow-[0_0_30px_rgba(180,154,90,0.6)] transition-shadow">
                 A
               </div>
               <span className="font-semibold text-sm text-[var(--text-primary)] hidden sm:block">
@@ -126,6 +126,42 @@ export default function Navbar() {
                 <LinkedInIcon size={18} />
               </a>
             </div>
+
+            {/* Theme Toggle */}
+            {mounted && (
+              <motion.button
+                onClick={toggleTheme}
+                id="theme-toggle"
+                aria-label="Toggle theme"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-9 h-9 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
+              >
+                <AnimatePresence mode="wait">
+                  {theme === "dark" ? (
+                    <motion.div
+                      key="sun"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Sun size={16} />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="moon"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Moon size={16} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            )}
 
             {/* Mobile Menu Toggle */}
             <button

@@ -16,7 +16,10 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden">
+    <section id="home" className="relative min-h-screen overflow-hidden grid-bg">
+      <div className="orb orb-1" />
+      <div className="orb orb-2" />
+
       <div
         className="container-custom relative z-10"
         style={{ paddingTop: "100px", paddingBottom: "72px" }}
@@ -107,7 +110,13 @@ export default function Hero() {
               <motion.a
                 href="#projects"
                 id="hero-view-work"
-                className="btn-primary"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm transition-all duration-200"
+                style={{
+                  background: "linear-gradient(135deg, #B49A5A, #9D8449)",
+                  boxShadow: "0 0 24px rgba(180, 154, 90, 0.35), 0 4px 14px rgba(180, 154, 90, 0.25)",
+                }}
               >
                 View My Work
                 <ArrowRight size={16} />
@@ -117,8 +126,16 @@ export default function Hero() {
               <motion.a
                 href="/resume.pdf"
                 id="hero-download-resume"
-                download
-                className="btn-secondary"
+                download="Anuraj_Singh_Resume.pdf"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border transition-all duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent-glow)]"
+                style={{
+                  color: "var(--text-primary)",
+                  borderColor: "var(--border)",
+                  background: "var(--bg-secondary)",
+                  boxShadow: "0 2px 10px rgba(17, 17, 17, 0.04)",
+                }}
               >
                 Download Resume
                 <Download size={15} />

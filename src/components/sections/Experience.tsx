@@ -12,7 +12,7 @@ const entries = [
     type:        "experience",
     icon:        Users,
     description: "Represented Google technologies and organized technical initiatives on campus.",
-    iconColor:   "var(--accent)",
+    iconColor:   "#B49A5A",
   },
   {
     role:        "HackIndia Participant",
@@ -21,7 +21,7 @@ const entries = [
     type:        "achievement",
     icon:        Trophy,
     description: "Collaborated in a national hackathon to design and present a working solution.",
-    iconColor:   "var(--accent)",
+    iconColor:   "#B49A5A",
   },
   {
     role:        "Mobile App Developer",
@@ -30,24 +30,24 @@ const entries = [
     type:        "experience",
     icon:        Code2,
     description: "Building cross-platform mobile applications using React Native and modern development practices.",
-    iconColor:   "var(--accent)",
+    iconColor:   "#B49A5A",
   },
 ];
 
 const typeConfig = {
   experience: {
     label:  "Experience",
-    color:  "var(--accent)",
-    border: "var(--border)",
-    bg:     "var(--bg-primary)",
-    glow:   "var(--accent-glow)",
+    color:  "#B49A5A",
+    border: "rgba(180,154,90,0.28)",
+    bg:     "rgba(180,154,90,0.09)",
+    glow:   "rgba(180,154,90,0.15)",
   },
   achievement: {
     label:  "Achievement",
-    color:  "var(--accent)",
-    border: "var(--border)",
-    bg:     "var(--bg-primary)",
-    glow:   "var(--accent-glow)",
+    color:  "#B49A5A",
+    border: "rgba(180,154,90,0.28)",
+    bg:     "rgba(180,154,90,0.09)",
+    glow:   "rgba(180,154,90,0.15)",
   },
 };
 

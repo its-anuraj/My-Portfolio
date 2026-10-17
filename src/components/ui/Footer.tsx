@@ -11,7 +11,7 @@ export default function Footer() {
     <footer 
       className="bg-[var(--bg-secondary)]"
       style={{
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+        borderTop: "1px solid var(--border)",
         paddingTop: "32px",
         paddingBottom: "32px",
       }}
@@ -30,16 +30,24 @@ export default function Footer() {
             Mobile App Developer • React Native Developer
           </p>
           
-          <div className="flex items-center gap-3 text-sm text-[var(--text-muted)] mt-2">
-            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)] transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-[var(--text-muted)] mt-2">
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] transition-colors">
               GitHub
             </a>
             <span>•</span>
-            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)] transition-colors">
+            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] transition-colors">
               LinkedIn
             </a>
             <span>•</span>
-            <a href={`mailto:${personalInfo.email}`} className="hover:text-[var(--text-primary)] transition-colors">
+            <a href="#resume" className="hover:text-[var(--accent)] transition-colors">
+              Resume
+            </a>
+            <span>•</span>
+            <a href="/resume.pdf" download="Anuraj_Singh_Resume.pdf" className="hover:text-[var(--accent)] transition-colors">
+              Download CV
+            </a>
+            <span>•</span>
+            <a href={`mailto:${personalInfo.email}`} className="hover:text-[var(--accent)] transition-colors">
               Email
             </a>
           </div>

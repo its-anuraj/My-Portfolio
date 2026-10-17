@@ -7,8 +7,8 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import { projects } from "@/lib/data";
 
 const statusConfig = {
-  "In Progress": { color: "var(--accent)", bg: "var(--bg-primary)", icon: Clock },
-  Completed: { color: "var(--accent)", bg: "var(--bg-primary)", icon: CheckCircle },
+  "In Progress": { color: "#B49A5A", bg: "rgba(180,154,90,0.12)", icon: Clock },
+  Completed: { color: "#10b981", bg: "rgba(16,185,129,0.12)", icon: CheckCircle },
 };
 
 export default function Projects() {
@@ -43,7 +43,7 @@ export default function Projects() {
                 : "grid grid-cols-1 md:grid-cols-2 gap-6 w-full mx-auto"
             }
             style={{ 
-              maxWidth: projects.length === 1 ? "700px" : "900px"
+              maxWidth: projects.length === 1 ? "700px" : "1100px"
             }}
           >
           {projects.map((project, i) => {
@@ -66,23 +66,25 @@ export default function Projects() {
                 }}
               >
                 {/* Large Preview Image / Header Area */}
-                  <div 
-                    className="w-full relative flex items-center justify-center overflow-hidden bg-[var(--bg-primary)]"
-                    style={{ 
-                      height: "120px",
-                      borderBottom: "1px solid var(--border)"
-                    }}
-                  >
+                <div 
+                  className="w-full relative flex items-center justify-center overflow-hidden"
+                  style={{ 
+                    height: "120px",
+                    background: "linear-gradient(135deg, rgba(180, 154, 90, 0.12) 0%, rgba(180, 154, 90, 0.04) 100%)",
+                    borderBottom: "1px solid var(--border)"
+                  }}
+                >
                   {/* Decorative background grid/pattern */}
                   <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none" />
                   
                   {/* Floating App Icon */}
                   <div
-                    className="relative z-10 rounded-xl flex items-center justify-center text-white font-bold shadow-[0_0_30px_var(--accent-glow)] transition-transform duration-500 group-hover:scale-110 btn-primary"
+                    className="relative z-10 rounded-xl flex items-center justify-center text-white font-bold shadow-[0_0_24px_rgba(180,154,90,0.35)] transition-transform duration-500 group-hover:scale-110"
                     style={{
                       width: "70px",
                       height: "70px",
                       fontSize: "28px",
+                      background: "linear-gradient(135deg, #B49A5A 0%, #9D8449 100%)",
                     }}
                   >
                     {project.title[0]}
@@ -124,6 +126,15 @@ export default function Projects() {
                     <p className="text-[13px] text-[var(--text-secondary)]" style={{ lineHeight: 1.6 }}>
                       {project.description}
                     </p>
+                    
+                    {/* Demo Credentials */}
+                    {project.title === "Team Forge" && (
+                      <div className="mt-4 p-3 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--border)] inline-block self-center sm:self-start">
+                        <p className="text-[12px] font-semibold text-[var(--text-primary)] mb-1">Demo Credentials:</p>
+                        <p className="text-[12px] text-[var(--text-muted)]">Email: <span className="text-[var(--text-secondary)]">user@gmail.com</span></p>
+                        <p className="text-[12px] text-[var(--text-muted)]">Password: <span className="text-[var(--text-secondary)]">1234</span></p>
+                      </div>
+                    )}
                   </div>
 
                   {/* Tags */}
@@ -165,7 +176,7 @@ export default function Projects() {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 py-2 px-4 rounded-lg btn-primary text-white text-[13px] font-bold transition-all duration-300 shadow-sm"
+                        className="flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white text-[13px] font-bold transition-all duration-300 shadow-sm"
                         style={{ height: "40px" }}
                       >
                         <ExternalLink size={14} />

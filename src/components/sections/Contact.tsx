@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, Send, MapPin, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, Phone, Send, MapPin, CheckCircle, AlertCircle, FileText } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { personalInfo } from "@/lib/data";
@@ -15,8 +15,8 @@ const contactLinks = [
     value: personalInfo.email,
     href: `mailto:${personalInfo.email}`,
     description: "Best way to reach me",
-    color: "var(--text-muted)",
-    bg: "var(--bg-primary)",
+    color: "#B49A5A",
+    bg: "rgba(180,154,90,0.10)",
   },
   {
     id: "contact-phone",
@@ -25,8 +25,19 @@ const contactLinks = [
     value: personalInfo.phone,
     href: `tel:${personalInfo.phone}`,
     description: "Available on WhatsApp",
-    color: "var(--text-muted)",
-    bg: "var(--bg-primary)",
+    color: "#B49A5A",
+    bg: "rgba(180,154,90,0.10)",
+  },
+  {
+    id: "contact-resume",
+    icon: FileText,
+    label: "Resume / CV",
+    value: "Anuraj_Singh_Resume.pdf",
+    href: "/resume.pdf",
+    description: "View or download official CV",
+    color: "#B49A5A",
+    bg: "rgba(180,154,90,0.10)",
+    download: "Anuraj_Singh_Resume.pdf",
   },
   {
     id: "contact-github",
@@ -35,8 +46,8 @@ const contactLinks = [
     value: "its-anuraj",
     href: personalInfo.github,
     description: "Check out my code",
-    color: "var(--text-muted)",
-    bg: "var(--bg-primary)",
+    color: "#B49A5A",
+    bg: "rgba(180,154,90,0.10)",
   },
   {
     id: "contact-linkedin",
@@ -45,8 +56,8 @@ const contactLinks = [
     value: "anuraj-singh",
     href: personalInfo.linkedin,
     description: "Let's connect professionally",
-    color: "var(--text-muted)",
-    bg: "var(--bg-primary)",
+    color: "#B49A5A",
+    bg: "rgba(180,154,90,0.10)",
   },
 ];
 
@@ -172,7 +183,7 @@ export default function Contact() {
             }}
           >
             {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-glow)] via-transparent to-purple-500/5 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-glow)] via-transparent to-transparent pointer-events-none" />
 
             <div 
               className="relative z-10 flex flex-col items-center text-center justify-center h-full"
@@ -215,8 +226,9 @@ export default function Contact() {
                   href={link.href}
                   id={link.id}
                   aria-label={link.label}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+                  download={"download" in link ? link.download : undefined}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -326,7 +338,11 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="btn-primary mt-2 w-full py-3.5 flex justify-center gap-2"
+                  className="mt-2 w-full py-3.5 px-6 rounded-xl font-semibold text-white transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:opacity-95"
+                  style={{
+                    background: "linear-gradient(135deg, #B49A5A, #9D8449)",
+                    boxShadow: "0 4px 14px rgba(180, 154, 90, 0.25)",
+                  }}
                 >
                   {status === "submitting" ? (
                     <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

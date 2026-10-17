@@ -5,7 +5,21 @@ import { BookOpen } from "lucide-react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { skills } from "@/lib/data";
 
+/* ─── Unified Muted Gold Theme per category ───────────────────────────────── */
+const goldStyle = {
+  accent: "#B49A5A",
+  bg:     "rgba(180,154,90,0.08)",
+  border: "rgba(180,154,90,0.25)",
+  glow:   "rgba(180,154,90,0.14)",
+};
 
+const colorMap: Record<string, { accent: string; bg: string; border: string; glow: string }> = {
+  gold:    goldStyle,
+  violet:  goldStyle,
+  blue:    goldStyle,
+  emerald: goldStyle,
+  orange:  goldStyle,
+};
 
 /* ─── Animation variants ─────────────────────────────────────────────────── */
 const containerVariants = {
@@ -23,7 +37,7 @@ const badgeVariants = (delay: number) => ({
 
 export default function Skills() {
   return (
-    <SectionWrapper id="skills">
+    <SectionWrapper id="skills" className="bg-[var(--bg-secondary)]">
       <div
         className="mx-auto w-full"
         style={{ maxWidth: "1400px", padding: "0 clamp(20px, 5vw, 80px)" }}
@@ -101,13 +115,14 @@ export default function Skills() {
           style={{ gap: "24px", marginBottom: "24px" }}
         >
           {skills.map((group, gi) => {
+            const c = colorMap[group.color] || goldStyle;
             return (
               <motion.div
                 key={group.category}
                 variants={cardVariants}
                 whileHover={{
                   y: -4,
-                  boxShadow: `0 0 40px var(--accent-glow), var(--shadow-lg)`,
+                  boxShadow: `0 0 40px ${c.glow}, var(--shadow-lg)`,
                 }}
                 transition={{ duration: 0.25 }}
                 className="relative overflow-hidden rounded-[20px] border border-l-4"
@@ -116,7 +131,7 @@ export default function Skills() {
                   padding: "28px",
                   background: "var(--bg-tertiary)",
                   borderColor: "var(--border)",
-                  borderLeftColor: "var(--accent)",
+                  borderLeftColor: c.accent,
                   boxShadow: "var(--shadow-md)",
                   cursor: "default",
                 }}
@@ -125,7 +140,7 @@ export default function Skills() {
                 <div
                   className="absolute top-0 right-0 w-36 h-36 pointer-events-none rounded-bl-full"
                   style={{
-                    background: `radial-gradient(circle at top right, var(--accent-glow) 0%, transparent 70%)`,
+                    background: `radial-gradient(circle at top right, ${c.glow} 0%, transparent 70%)`,
                   }}
                 />
 
@@ -152,9 +167,9 @@ export default function Skills() {
                     style={{
                       fontSize: "11px",
                       padding: "3px 10px",
-                      background: "var(--accent-glow)",
-                      color: "var(--accent)",
-                      border: `1px solid var(--accent-glow)`,
+                      background: c.bg,
+                      color: c.accent,
+                      border: `1px solid ${c.border}`,
                     }}
                   >
                     {group.items.length} skills
@@ -170,8 +185,10 @@ export default function Skills() {
                     <motion.span
                       key={skill}
                       variants={badgeVariants(gi * 0.1 + si * 0.055)}
-                      className="tag"
+                      whileHover={{ scale: 1.05, background: c.bg, color: c.accent, borderColor: c.accent }}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-[var(--bg-primary)] border-[var(--border)] text-[var(--text-secondary)]"
                       style={{
+                        fontSize: "0.825rem",
                         transition: "all 0.2s ease",
                       }}
                     >
@@ -191,14 +208,16 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
           whileHover={{ y: -3 }}
-          className="relative overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--bg-tertiary)]"
+          className="relative overflow-hidden rounded-[20px] border"
           style={{
             padding: "32px 40px",
             minHeight: "200px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "var(--shadow-md)",
+            background: "linear-gradient(135deg, rgba(180,154,90,0.08) 0%, rgba(180,154,90,0.03) 100%)",
+            borderColor: "rgba(180,154,90,0.25)",
+            boxShadow: "0 0 40px rgba(180,154,90,0.08), 0 0 0 1px rgba(180,154,90,0.12)",
             backdropFilter: "blur(12px)",
           }}
         >
@@ -206,7 +225,7 @@ export default function Skills() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: "radial-gradient(ellipse at 50% 0%, var(--accent-glow) 0%, transparent 65%)",
+              background: "radial-gradient(ellipse at 50% 0%, rgba(180,154,90,0.14) 0%, transparent 65%)",
             }}
           />
 
@@ -217,15 +236,17 @@ export default function Skills() {
           >
             {/* Icon */}
             <div
-              className="flex items-center justify-center rounded-2xl bg-[var(--bg-primary)] border border-[var(--border)]"
+              className="flex items-center justify-center rounded-2xl"
               style={{
                 width: "48px",
                 height: "48px",
                 marginBottom: "20px",
-                boxShadow: "0 0 20px var(--accent-glow)",
+                background: "rgba(180,154,90,0.12)",
+                border: "1px solid rgba(180,154,90,0.30)",
+                boxShadow: "0 0 20px rgba(180,154,90,0.18)",
               }}
             >
-              <BookOpen size={20} style={{ color: "var(--accent)" }} />
+              <BookOpen size={20} style={{ color: "#B49A5A" }} />
             </div>
 
             {/* Title */}

@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  // removed invalid allowedDevOrigins and images.qualities
-};
+const nextConfig = {};
 
 export default nextConfig;

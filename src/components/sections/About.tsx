@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, GraduationCap, Smartphone, Code2 } from "lucide-react";
+import { MapPin, GraduationCap, Smartphone, Code2, FileText, Download, ArrowRight } from "lucide-react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { personalInfo, stats } from "@/lib/data";
 
@@ -111,7 +111,7 @@ export default function About() {
                       width: "40px",
                       height: "40px",
                       background: "var(--accent-glow)",
-                      borderColor: "rgba(99,102,241,0.18)",
+                      borderColor: "rgba(180, 154, 90, 0.25)",
                     }}
                   >
                     <item.icon size={16} className="text-[var(--accent)]" />
@@ -195,8 +195,8 @@ export default function About() {
                     width: "44px",
                     height: "44px",
                     fontSize: "15px",
-                    background: "linear-gradient(135deg, var(--accent), var(--accent-light))",
-                    boxShadow: "var(--shadow-glow)",
+                    background: "linear-gradient(135deg, #B49A5A, #9D8449)",
+                    boxShadow: "0 0 20px rgba(180, 154, 90, 0.35)",
                   }}
                 >
                   A
@@ -218,7 +218,7 @@ export default function About() {
                 </div>
 
                 <div className="flex items-center flex-shrink-0" style={{ gap: "6px" }}>
-                  <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span
                     className="text-[var(--text-muted)] hidden sm:inline"
                     style={{ fontSize: "0.75rem" }}
@@ -259,6 +259,29 @@ export default function About() {
                     </span>
                   </div>
                 ))}
+              </div>
+
+              {/* Resume quick action bar */}
+              <div
+                className="pt-4 border-t border-[var(--border)] mt-5 flex flex-wrap items-center justify-between gap-3"
+              >
+                <a
+                  href="#resume"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent)] hover:underline group"
+                >
+                  <FileText size={14} />
+                  <span>View Official Resume</span>
+                  <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                </a>
+
+                <a
+                  href="/resume.pdf"
+                  download="Anuraj_Singh_Resume.pdf"
+                  className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                >
+                  <Download size={13} />
+                  <span>Download CV</span>
+                </a>
               </div>
             </motion.div>
           </motion.div>

@@ -13,7 +13,7 @@ export const personalInfo = {
 
 export const stats = [
   { label: "Year of Study", value: "4th Year" },
-  { label: "Tech Skills", value: "17+" },
+  { label: "Tech Skills", value: "28+" },
   { label: "Hackathons", value: "1+" },
   { label: "Focus", value: "Mobile Dev" },
 ];
@@ -22,26 +22,59 @@ export const skills = [
   {
     category: "Languages",
     items: ["Java", "C", "C++", "Python", "TypeScript", "JavaScript", "SQL"],
-    color: "violet",
+    color: "gold",
   },
   {
-    category: "Frontend & Mobile",
-    items: ["React", "React Native", "HTML", "CSS"],
-    color: "blue",
+    category: "Mobile & Frontend",
+    items: [
+      "React Native",
+      "Expo",
+      "Android Studio",
+      "React.js",
+      "NativeWind",
+      "Zustand",
+      "HTML5 / CSS3",
+    ],
+    color: "gold",
   },
   {
-    category: "DevOps & Tools",
-    items: ["Git", "GitHub", "Docker", "Kubernetes"],
-    color: "emerald",
+    category: "Cloud, BaaS & Backend",
+    items: [
+      "Supabase",
+      "Clerk Auth",
+      "Firebase",
+      "Node.js",
+      "PostgreSQL",
+      "MongoDB",
+      "REST APIs",
+    ],
+    color: "gold",
   },
   {
-    category: "Analytics & Productivity",
-    items: ["MS Excel", "Power BI"],
-    color: "orange",
+    category: "DevOps & Developer Tools",
+    items: [
+      "Git",
+      "GitHub",
+      "Docker",
+      "Postman",
+      "VS Code",
+      "MS Excel",
+      "Power BI",
+    ],
+    color: "gold",
   },
 ];
 
 export const projects = [
+  {
+    title: "Keepr – Ownership Vault",
+    description:
+      "A comprehensive digital ownership vault to organize purchased assets, warranties, receipts, return deadlines, and service history. Built with Supabase Auth, PostgreSQL with RLS, private document storage, and Google Gemini Multimodal API for AI-powered receipt scanning.",
+    tags: ["React Native", "Expo", "Supabase", "Gemini AI", "Zustand"],
+    github: "https://github.com/its-anuraj/Keepr",
+    status: "Completed",
+    featured: true,
+  },
   {
     title: "Expense Tracker App",
     description:
@@ -115,5 +148,6 @@ export const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Certifications", href: "#certifications" },
+  { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
