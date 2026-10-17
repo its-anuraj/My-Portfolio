@@ -142,12 +142,9 @@ export default function Hero() {
           </div>
 
           {/* ── RIGHT COLUMN: Orbital ─────────────────────────────────────── */}
-          <motion.div
-            variants={itemVariants}
-            className="flex-shrink-0 w-full lg:w-auto flex justify-center"
-          >
+          <div className="flex-shrink-0 w-full lg:w-auto flex justify-center">
             <HeroOrbit />
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Scroll indicator */}
