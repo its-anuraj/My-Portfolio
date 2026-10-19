@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+import { useIntro } from "@/context/IntroContext";
+
 /* ─── Types ─────────────────────────────────────────────────────────────── */
 interface NodeDef {
   label: string;
@@ -76,6 +78,8 @@ const ARC_BOTTOM = `M ${CX} ${CY + OUTER_R} A ${OUTER_R} ${OUTER_R} 0 0 1 ${CX -
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
 export default function HeroOrbit() {
+  const { isIntroActive } = useIntro();
+
   return (
     <div
       className="relative mx-auto select-none"
@@ -96,16 +100,24 @@ export default function HeroOrbit() {
           cx={CX} cy={CY} r={OUTER_R} fill="none"
           stroke="rgba(180,154,90,0.45)" strokeWidth="1" strokeDasharray="10 24"
           style={{ transformOrigin: `${CX}px ${CY}px` }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          animate={isIntroActive ? { rotate: 0 } : { rotate: 360 }}
+          transition={
+            isIntroActive
+              ? { duration: 0 }
+              : { duration: 30, repeat: Infinity, ease: "linear" }
+          }
         />
         {/* Counter-rotating fine ring */}
         <motion.circle
           cx={CX} cy={CY} r={OUTER_R - 8} fill="none"
           stroke="rgba(180,154,90,0.16)" strokeWidth="1" strokeDasharray="4 18"
           style={{ transformOrigin: `${CX}px ${CY}px` }}
-          animate={{ rotate: -360 }}
-          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          animate={isIntroActive ? { rotate: 0 } : { rotate: -360 }}
+          transition={
+            isIntroActive
+              ? { duration: 0 }
+              : { duration: 45, repeat: Infinity, ease: "linear" }
+          }
         />
         {/* Inner avatar ring — matches 50% avatar size */}
         <circle cx={CX} cy={CY} r={110} fill="none" stroke="rgba(180,154,90,0.22)" strokeWidth="1" />
@@ -130,8 +142,12 @@ export default function HeroOrbit() {
         <motion.div
           key={node.label}
           initial={{ opacity: 0, scale: 0.4 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 + i * 0.08, duration: 0.5, ease: "backOut" }}
+          animate={isIntroActive ? { opacity: 0, scale: 0.4 } : { opacity: 1, scale: 1 }}
+          transition={
+            isIntroActive
+              ? { duration: 0 }
+              : { delay: 0.15 + i * 0.08, duration: 0.5, ease: "backOut" }
+          }
           className="absolute flex justify-center group z-10"
           style={{ 
             left: `${node.leftPct}%`, 
@@ -208,11 +224,11 @@ export default function HeroOrbit() {
             src="/anuraj.png"
             alt="Anuraj Singh — Mobile App Developer specializing in React Native and Expo"
             fill
-            sizes="(max-width: 480px) 180px, (max-width: 768px) 220px, 260px"
+            sizes="(max-width: 640px) 220px, (max-width: 1024px) 290px, 320px"
             className="object-cover"
-            style={{ objectPosition: "top center" }}
+            style={{ objectPosition: "center center" }}
             priority
-            quality={85}
+            quality={90}
           />
         </div>
 
@@ -224,8 +240,12 @@ export default function HeroOrbit() {
             borderColor: "rgba(180, 154, 90, 0.35)",
             zIndex: 3,
           }}
-          animate={{ rotate: -360 }}
-          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+          animate={isIntroActive ? { rotate: 0 } : { rotate: -360 }}
+          transition={
+            isIntroActive
+              ? { duration: 0 }
+              : { duration: 7, repeat: Infinity, ease: "linear" }
+          }
         >
           <div
             className="absolute rounded-full"

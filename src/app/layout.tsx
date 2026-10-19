@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/ui/Footer";
 import StructuredData from "@/components/seo/StructuredData";
+import IntroAnimation from "../components/ui/IntroAnimation";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -110,10 +111,60 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-intro="active"
       suppressHydrationWarning
       className={`${inter.variable} h-full antialiased`}
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var force = false;
+                var seen = false;
+                var reduced = false;
+                try {
+                  var params = new URLSearchParams(window.location.search);
+                  force = params.get('intro') === '1' || params.get('preview') === 'intro';
+                } catch(e) {}
+                if (!force) {
+                  try {
+                    seen = sessionStorage.getItem('portfolio_intro_seen') === 'true';
+                  } catch(e) {}
+                  try {
+                    reduced = Boolean(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+                  } catch(e) {}
+                }
+                if (seen || reduced) {
+                  document.documentElement.removeAttribute('data-intro');
+                  window.__PORTFOLIO_INTRO_SKIPPED__ = true;
+                } else {
+                  document.documentElement.setAttribute('data-intro', 'active');
+                  window.__PORTFOLIO_INTRO_SKIPPED__ = false;
+                }
+                setTimeout(function() {
+                  try {
+                    if (document.documentElement.hasAttribute('data-intro')) {
+                      document.documentElement.removeAttribute('data-intro');
+                    }
+                  } catch(e) {}
+                }, 6000);
+              })();
+            `,
+          }}
+        />
+        <noscript>
+          <style>{`
+            html[data-intro] #main-layout-content {
+              opacity: 1 !important;
+              visibility: visible !important;
+              pointer-events: auto !important;
+            }
+            #intro-animation-screen {
+              display: none !important;
+            }
+          `}</style>
+        </noscript>
         <StructuredData />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
@@ -124,11 +175,13 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ThemeProvider>
-          <Navbar />
-          <div className="flex-1 flex flex-col">
-            {children}
-          </div>
-          <Footer />
+          <IntroAnimation>
+            <Navbar />
+            <div className="flex-1 flex flex-col">
+              {children}
+            </div>
+            <Footer />
+          </IntroAnimation>
         </ThemeProvider>
       </body>
     </html>

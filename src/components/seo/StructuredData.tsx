@@ -4,7 +4,6 @@ export default function StructuredData() {
   const baseUrl = "https://anuraj-singh.vercel.app";
 
   const personSchema = {
-    "@context": "https://schema.org",
     "@type": "Person",
     "@id": `${baseUrl}/#person`,
     name: personalInfo.name,
@@ -12,6 +11,9 @@ export default function StructuredData() {
     url: baseUrl,
     image: `${baseUrl}/anuraj.png`,
     jobTitle: "Mobile App Developer",
+    gender: "Male",
+    nationality: "Indian",
+    knowsLanguage: ["en", "hi"],
     description:
       "Mobile App Developer specializing in React Native, Expo, TypeScript, JavaScript, and cross-platform mobile application development.",
     knowsAbout: [
@@ -21,16 +23,20 @@ export default function StructuredData() {
       "JavaScript",
       "Mobile Application Development",
       "Android Development",
+      "iOS Development",
       "Supabase",
       "Firebase",
       "Zustand",
       "SQL",
       "PostgreSQL",
       "REST APIs",
+      "Docker",
+      "Kubernetes",
     ],
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: educationDetails.institution,
+      url: "https://www.kccitm.edu.in",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Greater Noida",
@@ -50,7 +56,6 @@ export default function StructuredData() {
   };
 
   const websiteSchema = {
-    "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${baseUrl}/#website`,
     url: baseUrl,
@@ -65,7 +70,6 @@ export default function StructuredData() {
   };
 
   const profilePageSchema = {
-    "@context": "https://schema.org",
     "@type": "ProfilePage",
     "@id": `${baseUrl}/#profilepage`,
     url: baseUrl,
@@ -80,11 +84,13 @@ export default function StructuredData() {
     mainEntity: {
       "@id": `${baseUrl}/#person`,
     },
+    inLanguage: "en-US",
   };
 
   const projectListSchema = {
-    "@context": "https://schema.org",
     "@type": "ItemList",
+    "@id": `${baseUrl}/#projects`,
+    name: "Featured Projects by Anuraj Singh",
     itemListElement: projects
       .filter((p) => p.featured)
       .map((project, index) => ({
@@ -104,24 +110,20 @@ export default function StructuredData() {
       })),
   };
 
+  const unifiedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      personSchema,
+      websiteSchema,
+      profilePageSchema,
+      projectListSchema,
+    ],
+  };
+
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectListSchema) }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(unifiedSchema) }}
+    />
   );
 }

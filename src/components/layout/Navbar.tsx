@@ -127,16 +127,16 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* Theme Toggle */}
-            {mounted && (
-              <motion.button
-                onClick={toggleTheme}
-                id="theme-toggle"
-                aria-label="Toggle theme"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-9 h-9 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
-              >
+            {/* Theme Toggle — Always rendered to avoid Cumulative Layout Shift (CLS) */}
+            <motion.button
+              onClick={toggleTheme}
+              id="theme-toggle"
+              aria-label="Toggle light or dark theme"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-9 h-9 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
+            >
+              {mounted ? (
                 <AnimatePresence mode="wait">
                   {theme === "dark" ? (
                     <motion.div
@@ -160,14 +160,19 @@ export default function Navbar() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.button>
-            )}
+              ) : (
+                <span className="w-4 h-4 block" aria-hidden="true" />
+              )}
+            </motion.button>
 
             {/* Mobile Menu Toggle */}
             <button
               id="mobile-menu-toggle"
+              type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle mobile menu"
+              aria-label={mobileOpen ? "Close mobile menu" : "Open mobile menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu-nav"
               className="lg:hidden p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -186,7 +191,7 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed top-16 left-0 right-0 z-40 glass-card border-b border-[var(--border)] shadow-[var(--shadow-lg)] lg:hidden"
           >
-            <nav className="container-custom py-4 flex flex-col gap-1">
+            <nav id="mobile-menu-nav" aria-label="Mobile navigation" className="container-custom py-4 flex flex-col gap-1">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href || (activeSection === "" && link.href === "#home");
                 return (

@@ -397,3 +397,60 @@ body {
   margin: 0 auto;
   line-height: 1.7;
 }
+
+/* ─── Intro Screen Shield & Transition Rules ───────────────────────── */
+/* While intro is active on <html>, prevent scrolling and completely shield portfolio content */
+html[data-intro]:not([data-intro="exiting"]):not([data-intro="completed"]):not([data-intro="skipped"]) {
+  overflow: hidden !important;
+}
+
+html[data-intro]:not([data-intro="exiting"]):not([data-intro="completed"]):not([data-intro="skipped"]) #main-layout-content {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html[data-intro]:not([data-intro="exiting"]):not([data-intro="completed"]):not([data-intro="skipped"]) a[href="#main-content"] {
+  display: none !important;
+}
+
+/* While intro is active or exiting, ensure intro screen is visible */
+html[data-intro]:not([data-intro="completed"]):not([data-intro="skipped"]) #intro-animation-screen {
+  visibility: visible !important;
+}
+
+/* When intro is exiting, allow main content to become visible with smooth GPU transition */
+html[data-intro="exiting"] #main-layout-content {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#main-layout-content {
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* If intro is not active (returning visitor, reduced motion, or completed), immediately hide overlay */
+html:not([data-intro]) #intro-animation-screen,
+html[data-intro="completed"] #intro-animation-screen,
+html[data-intro="skipped"] #intro-animation-screen {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-intro] {
+    overflow: auto !important;
+  }
+  html[data-intro] #main-layout-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  #intro-animation-screen {
+    display: none !important;
+  }
+  html[data-intro] a[href="#main-content"] {
+    display: block !important;
+  }
+}
+
